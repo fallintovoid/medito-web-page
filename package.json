@@ -13,9 +13,11 @@
     "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2023-12-18 --compatibility-flag=nodejs_compat"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sass": "^1.69.7"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.8.5",

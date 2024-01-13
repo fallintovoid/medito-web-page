@@ -1,0 +1,10 @@
+@import '@/styles/config.scss';
+
+.block {
+    border-radius: 12px;
+    padding: $padding-block;
+    transition: 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+@mixin for-desktops {
+    @media (min-width: $min-desktop) {
+        @content;
+    }
+}
+
+@mixin for-laptops {
+    @media (min-width: $min-laptop) {
+        @content;
+    }
+}
+
+@mixin for-tablets {
+    @media (min-width: $min-tablet) and (max-width: $min-laptop) {
+        @content;
+    }
+}
+
+@mixin for-phones {
+    @media (max-width: $max-phone) {
+        @content;
+    }
+}
+
+@mixin page-padding {
+    padding: $padding-page-desktop;
+
+    @include for-tablets() {
+        padding: $padding-page-tablet
+    }
+
+    @include for-phones {
+        padding: $padding-page-phone;
+    }
+}

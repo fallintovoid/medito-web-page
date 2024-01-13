@@ -1,0 +1,39 @@
+@import '@/styles/config.scss';
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    padding: $padding-page-desktop;
+    align-items: center;
+    height: 100%;
+
+   @include page-padding;
+
+    h1 {
+        text-align: center;
+    }
+
+    &__grid {
+        margin-top: 40px;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+
+        @include for-tablets {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include for-phones {
+            grid-template-columns: 1fr;
+        }
+
+        &__item {
+            transition: 0.2s ease-in-out;
+            &:hover {
+                box-shadow: 0px 2px 15px -1px rgba(194, 194, 194, 0.75);
+                transform: translateY(-5px);
+            }
+        }
+    }
+}
