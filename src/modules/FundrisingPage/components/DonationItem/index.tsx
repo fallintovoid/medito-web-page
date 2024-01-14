@@ -2,26 +2,42 @@ import Block from "@/UI/Block";
 import React from "react";
 import { BiDonateHeart } from "react-icons/bi";
 import { FaCircle } from "react-icons/fa";
+import cn from "classnames";
 
 import s from "./styles.module.scss";
+import getTimeAgo from "../../utils/getTimeAgo";
 
 type Props = {
   donatorName: string;
   value: number;
   date: string;
+  goalAmount: number;
 };
 
-const DonationItem = ({ donatorName, value, date }: Props) => {
+const DonationItem = ({ donatorName, value, date, goalAmount }: Props) => {
+  // For people who has donated more than 5% of overall Goal amount gets Tier 3
+  // For people who has donated more than 10% of overall Goal amount gets Tier 2
+  // For people who has donated more than 20% of overall Goal amount gets Tier 1
+  const percentage = (value / goalAmount) * 100;
+  const timeAgoString = getTimeAgo(date);
+
   return (
     <li>
-      <Block overrideClassname={s.item}>
+      <Block
+        overrideClassname={s.item}
+        className={cn({
+          [s.item__tier1]: percentage >= 20,
+          [s.item__tier2]: percentage >= 10 && percentage <= 19,
+          [s.item__tier3]: percentage >= 5 && percentage <= 9,
+        })}
+      >
         <BiDonateHeart size={25} />
         <div className={s.item__info}>
           <span className={s.item__info__name}>{donatorName}</span>
           <div className={s.item__info__value_date}>
             <span className={s.item__info__value}>{value}$</span>
             <FaCircle size={7} />
-            <span>{date}</span>
+            <span className={s.item__info__date}>{timeAgoString}</span>
           </div>
         </div>
       </Block>

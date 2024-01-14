@@ -27,5 +27,22 @@
         &__value {
             font-weight: 500;
         }
+
+        &__date {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+    }
+
+    &__tier1 {
+        border-right: 3px solid $color-user-tier-1;
+    }
+
+    &__tier2 {
+        border-right: 3px solid $color-user-tier-2;
+    }
+
+    &__tier3 {
+        border-right: 3px solid $color-user-tier-3;
     }
 }

@@ -9,19 +9,13 @@ export const fundrisingData: IFundrisingGoal[] = [
     donatedUsers: [
       {
         name: "Steve",
-        value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        value: 1,
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "2024-01-14T03:24:00",
       },
     ],
   },
@@ -33,35 +27,23 @@ export const fundrisingData: IFundrisingGoal[] = [
     donatedUsers: [
       {
         name: "Steve",
-        value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        value: 120,
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
     ],
   },
@@ -74,42 +56,27 @@ export const fundrisingData: IFundrisingGoal[] = [
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
     ],
   },
@@ -122,42 +89,27 @@ export const fundrisingData: IFundrisingGoal[] = [
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
       {
         name: "Steve",
         value: 20,
-        date:
-          new Date().toLocaleTimeString() +
-          " " +
-          new Date().toLocaleDateString(),
+        date: "1995-12-17T03:24:00",
       },
     ],
   },

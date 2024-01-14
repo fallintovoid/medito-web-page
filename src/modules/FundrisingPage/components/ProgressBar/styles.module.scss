@@ -14,6 +14,7 @@
         left: 0;
         background-color: $color-main;
         border-radius: 20px;
+        transition: width 0.3 ease-in-out;
     }
 
     &__wrapper {

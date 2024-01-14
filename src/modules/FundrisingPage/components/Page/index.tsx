@@ -33,11 +33,12 @@ const FundrisingPage = async ({ id }: Props) => {
             goalAmount={fundrising.goalAmount}
             currentAmount={currentAmount}
           />
-          <p>{fundrising.donatedUsers.length} People have already donated</p>
+          <p>{fundrising.donatedUsers.length} donations</p>
           <ul className={s.page__grid__right__list}>
             {fundrising.donatedUsers.map((item, i) => {
               return (
                 <DonationItem
+                  goalAmount={fundrising.goalAmount}
                   donatorName={item.name}
                   value={item.value}
                   date={item.date}

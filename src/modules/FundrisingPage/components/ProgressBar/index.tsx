@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import cn from "classnames";
 
 import s from "./styles.module.scss";
 
@@ -8,7 +11,14 @@ type Props = {
 };
 
 const ProgressBar = ({ goalAmount, currentAmount }: Props) => {
+  const [width, setWidth] = useState(0);
+
   const percentage = ((currentAmount / goalAmount) * 100).toFixed(1);
+  const styledPercentage = `${Number(width) > 100 ? 100 : width}%`;
+
+  useEffect(() => {
+    setWidth(Number(percentage));
+  }, []);
 
   return (
     <div className={s.progressbar__wrapper}>
@@ -21,7 +31,7 @@ const ProgressBar = ({ goalAmount, currentAmount }: Props) => {
       <div className={s.progressbar}>
         <div
           className={s.progressbar__inner}
-          style={{ width: `${Number(percentage) > 100 ? 100 : percentage}%` }}
+          style={{ width: styledPercentage }}
         ></div>
       </div>
     </div>
