@@ -1,0 +1,31 @@
+@import '@/styles/config.scss';
+
+.item {
+    border-radius: 12px;
+    padding: 15px;
+    transition: 0.2s ease-in-out;
+    display: flex;
+    gap: 15px;
+    border: 1px solid rgb(227, 227, 227);
+    align-items: center;
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        &__value_date {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        &__name {
+            font-size: 0.9em;
+        }
+
+        &__value {
+            font-weight: 500;
+        }
+    }
+}

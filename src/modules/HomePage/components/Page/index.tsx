@@ -1,46 +1,29 @@
-import React from "react";
-
-import s from "./styles.module.scss";
+import React, { use } from "react";
 import Block from "@/UI/Block";
 import Link from "next/link";
 
+import s from "./styles.module.scss";
+import getFundrisings from "../../utils/getFundrisings";
+
 type Props = {};
 
-const HomePage = (props: Props) => {
+const HomePage = async () => {
+  const fundrisings = await getFundrisings();
+
   return (
     <main className={s.homepage}>
       <h1>Find suitable fundrising goals</h1>
       <div className={s.homepage__grid}>
-        <Link href={"/1"}>
-          <Block className={s.homepage__grid__item}>
-            <h3>Hello</h3>
-            <p>Its a description</p>
-          </Block>
-        </Link>
-        <Link href={"/2"}>
-          <Block  className={s.homepage__grid__item}>
-            <h3>Hello</h3>
-            <p>Its a description</p>
-          </Block>
-        </Link>
-        <Link href={"/3"}>
-          <Block  className={s.homepage__grid__item}>
-            <h3>Hello</h3>
-            <p>Its a description</p>
-          </Block>
-        </Link>
-        <Link href={"/4"}>
-          <Block className={s.homepage__grid__item}>
-            <h3>Hello</h3>
-            <p>Its a description</p>
-          </Block>
-        </Link>
-        <Link href={"/5"}>
-          <Block  className={s.homepage__grid__item}>
-            <h3>Hello</h3>
-            <p>Its a description</p>
-          </Block>
-        </Link>
+        {fundrisings.map((item) => {
+          return (
+            <Link href={`/${item.id}`} key={item.id}>
+              <Block className={s.homepage__grid__item}>
+                <h3>{item.title}</h3>
+                <p>{item.description.slice(0, 30)}...</p>
+              </Block>
+            </Link>
+          );
+        })}
       </div>
     </main>
   );

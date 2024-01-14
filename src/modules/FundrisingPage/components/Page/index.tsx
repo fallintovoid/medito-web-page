@@ -2,54 +2,50 @@ import React from "react";
 import s from "./styles.module.scss";
 import Block from "@/UI/Block";
 import ProgressBar from "../ProgressBar";
+import DonationItem from "../DonationItem";
+import getFundrising from "../../utils/getFundrising";
 
 type Props = {
   id: string;
 };
 
-const FundrisingPage = ({ id }: Props) => {
+const FundrisingPage = async ({ id }: Props) => {
+  const fundrising = await getFundrising(id);
+
+  const currentAmount = fundrising.donatedUsers.reduce(
+    (accumulator, currValue) => accumulator + currValue.value,
+    0
+  );
+
   return (
     <main className={s.page}>
-      <h1>Here will be the title of fundrising</h1>
+      <h1>{fundrising.title}</h1>
       <div className={s.page__grid}>
         <div className={s.page__grid__left}>
           <Block>
-            <h3>About This Fundrising</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos
-              quaerat rem asperiores recusandae nobis odio totam non nemo amet
-              placeat, sequi, blanditiis porro, et inventore voluptas corporis
-              animi numquam assumenda? Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Ipsum voluptate modi, cum neque temporibus
-              minima! Est minus ducimus error ipsum, incidunt deserunt eveniet
-              aliquid reprehenderit ipsam voluptas nam consequuntur nostrum?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-              voluptas nihil eos sequi itaque quidem, perferendis sapiente atque
-              suscipit, magnam amet, eius necessitatibus quia veritatis
-              asperiores ab ex voluptate architecto? Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Ut natus facilis perferendis dicta
-              architecto quae, nam molestias eum numquam corporis qui ratione
-              aspernatur quo cupiditate voluptatum recusandae porro error
-              officia.
-            </p>
-          </Block>
-          <Block>
-            <h3>Who has already donated</h3>
-            <Block>
-              <span>Steve</span>
-            </Block>
-            <Block>
-              <span>Steve</span>
-            </Block>
-            <Block>
-              <span>Steve</span>
-            </Block>
+            <h3>About this Fundrising</h3>
+            <p>{fundrising.description}</p>
           </Block>
         </div>
 
         <Block className={s.page__grid__right}>
-          <ProgressBar />
-          <p>120 People have already donated</p>
+          <ProgressBar
+            goalAmount={fundrising.goalAmount}
+            currentAmount={currentAmount}
+          />
+          <p>{fundrising.donatedUsers.length} People have already donated</p>
+          <ul className={s.page__grid__right__list}>
+            {fundrising.donatedUsers.map((item, i) => {
+              return (
+                <DonationItem
+                  donatorName={item.name}
+                  value={item.value}
+                  date={item.date}
+                  key={i}
+                />
+              );
+            })}
+          </ul>
         </Block>
       </div>
     </main>

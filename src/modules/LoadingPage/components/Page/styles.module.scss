@@ -1,0 +1,15 @@
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    animation: beat infinite .25s alternate;
+}
+
+@keyframes beat{
+	to { transform: scale(1.4); }
+}

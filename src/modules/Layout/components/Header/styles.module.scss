@@ -1,0 +1,27 @@
+@import '@/styles/config.scss';
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px $padding-page-desktop-x;
+
+    @include max-tablets {
+        padding: 15px $padding-page-tablet-x;
+    }
+
+    @include max-phones {
+        padding: 10px $padding-page-phone-x
+    }
+
+    &__arrow_back {
+        color: $color-secondary;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            color: $color-main;
+            transform: translateX(-5px);
+        }
+    }
+}

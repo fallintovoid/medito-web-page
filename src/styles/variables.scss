@@ -1,8 +1,9 @@
 // Colors
 
-$color-main: #FFCCA4;
+$color-main: #62EA0F;
 $color-primary: #FFFFFF;
 $color-secondary: #484848;
+$color-progressbar: #B8FF8C;
 
 // Media query breakpoints
 
@@ -13,8 +14,12 @@ $max-phone: 600px;
 
 // Paddings and margins
 
-$padding-page-desktop: 70px 100px 70px 100px;
-$padding-page-tablet: 40px 60px;
-$padding-page-phone: 20px 15px;
+$padding-page-desktop-x: 100px; 
+$padding-page-tablet-x: 60px;
+$padding-page-phone-x: 15px;
+$padding-page-desktop: 15px $padding-page-desktop-x;
+$padding-page-tablet: 10px $padding-page-tablet-x;
+$padding-page-phone: 0 $padding-page-phone-x;
+
 
 $padding-block: 25px;

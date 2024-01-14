@@ -2,19 +2,27 @@ import React from "react";
 
 import s from "./styles.module.scss";
 
-type Props = {};
+type Props = {
+  goalAmount: number;
+  currentAmount: number;
+};
 
-const ProgressBar = (props: Props) => {
+const ProgressBar = ({ goalAmount, currentAmount }: Props) => {
+  const percentage = ((currentAmount / goalAmount) * 100).toFixed(1);
+
   return (
     <div className={s.progressbar__wrapper}>
       <div className={s.progressbar__info}>
         <div>
-          <span className={s.bold}>850$</span>/1000$
+          <span className={s.bold}>{currentAmount}$</span>/{goalAmount}$
         </div>
-        <div className={s.progressbar__info__right}>85%</div>
+        <div className={s.progressbar__info__right}>{percentage}%</div>
       </div>
       <div className={s.progressbar}>
-        <div className={s.progressbar__inner} style={{ width: "85%" }}></div>
+        <div
+          className={s.progressbar__inner}
+          style={{ width: `${Number(percentage) > 100 ? 100 : percentage}%` }}
+        ></div>
       </div>
     </div>
   );
