@@ -20,11 +20,11 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 15px;
 
-        @include for-tablets {
+        @include max-tablets {
             grid-template-columns: 1fr 1fr;
         }
 
-        @include for-phones {
+        @include max-phones {
             grid-template-columns: 1fr;
         }
 
