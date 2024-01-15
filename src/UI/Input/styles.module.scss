@@ -1,0 +1,10 @@
+@import '@/styles/config.scss';
+
+.input {
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid $color-secondary;
+    border-radius: 15px;
+    background-color: $color-primary;
+    box-sizing: border-box;
+}

@@ -14,14 +14,13 @@
         padding: 10px $padding-page-phone-x
     }
 
-    &__arrow_back {
+    &__home {
         color: $color-secondary;
         cursor: pointer;
         transition: 0.2s ease-in-out;
 
         &:hover {
             color: $color-main;
-            transform: translateX(-5px);
         }
     }
 }

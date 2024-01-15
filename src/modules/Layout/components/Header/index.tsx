@@ -1,25 +1,17 @@
-"use client";
-
 import React from "react";
-import { FaArrowLeft } from "react-icons/fa6";
-import { usePathname, useRouter } from "next/navigation";
+import { FaHome } from "react-icons/fa";
 
 import s from "./styles.module.scss";
+import Link from "next/link";
 
 type Props = {};
 
 const Header = () => {
-  const router = useRouter();
-  const pathname = usePathname();
   return (
     <header className={s.header}>
-      {pathname !== "/" && (
-        <FaArrowLeft
-          size={30}
-          onClick={router.back}
-          className={s.header__arrow_back}
-        />
-      )}
+      <Link href={"/"}>
+        <FaHome size={30} className={s.header__home} />
+      </Link>
     </header>
   );
 };

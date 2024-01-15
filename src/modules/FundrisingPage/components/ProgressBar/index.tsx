@@ -11,14 +11,10 @@ type Props = {
 };
 
 const ProgressBar = ({ goalAmount, currentAmount }: Props) => {
-  const [width, setWidth] = useState(0);
-
   const percentage = ((currentAmount / goalAmount) * 100).toFixed(1);
-  const styledPercentage = `${Number(width) > 100 ? 100 : width}%`;
-
-  useEffect(() => {
-    setWidth(Number(percentage));
-  }, []);
+  const styledPercentage = `${
+    Number(percentage) > 100 ? 100 : Number(percentage)
+  }%`;
 
   return (
     <div className={s.progressbar__wrapper}>
