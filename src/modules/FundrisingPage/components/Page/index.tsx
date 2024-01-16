@@ -20,13 +20,16 @@ const FundrisingPage = async ({ id }: Props) => {
       headers: {
         "Content-Type": "application/json",
       },
+      next: {
+        revalidate: 10,
+      },
     }
   );
 
   const data = await res.json();
   const donatedUsers = data.sessionsList as IDonatedUser[];
 
-  const currentAmount = fundrising.donatedUsers.reduce(
+  const currentAmount = donatedUsers.reduce(
     (accumulator, currValue) => accumulator + currValue.value,
     0
   );
@@ -47,7 +50,7 @@ const FundrisingPage = async ({ id }: Props) => {
             goalAmount={fundrising.goalAmount}
             currentAmount={currentAmount}
           />
-          <p>{fundrising.donatedUsers.length} donations</p>
+          <p>{donatedUsers.length} donations</p>
           <DonationForm fundrisingId={id} />
           <ul className={s.page__grid__right__list}>
             {donatedUsers.map((item, i) => {

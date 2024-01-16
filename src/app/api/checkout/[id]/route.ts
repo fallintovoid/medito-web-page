@@ -23,7 +23,6 @@ export async function GET(
         return item.metadata?.fundrisingId && item.metadata?.fundrisingId == id;
       })
       .map((item) => {
-        //2024-01-14T03:24:00
         return {
           name: item.customer_details!.name!.split(" ")[0],
           value: Number(getConvertedValue(item.amount_total!, item.currency!)),
