@@ -1,5 +1,7 @@
 // Next.js Edge API Route Handlers: https://nextjs.org/docs/app/building-your-application/routing/router-handlers#edge-and-nodejs-runtimes
 
+import { IDonatedUser } from "@/types/donatedUser";
+import { IFundrisingGoal } from "@/types/fundrisingGoal";
 import { type NextRequest } from "next/server";
 import Stripe from "stripe";
 
@@ -8,13 +10,14 @@ export const runtime = "edge";
 const stripe = new Stripe(process.env.STRIPE_SECRET_TOKEN!);
 const host = process.env.NEXT_PUBLIC_HOST;
 
-interface IRequestBody {
+interface IPostRequestBody {
   amount: number;
   currency: string;
+  fundrisingId: string;
 }
 
 export async function POST(request: NextRequest) {
-  const body = (await request.json()) as IRequestBody;
+  const body = (await request.json()) as IPostRequestBody;
   const date = new Date().toISOString();
   try {
     const session = await stripe.checkout.sessions.create({
@@ -31,6 +34,9 @@ export async function POST(request: NextRequest) {
           quantity: 1,
         },
       ],
+      metadata: {
+        fundrisingId: body.fundrisingId,
+      },
       mode: "payment",
       cancel_url: `${host}`,
       success_url: `${host}/success`,

@@ -5,6 +5,7 @@ import ProgressBar from "../ProgressBar";
 import DonationItem from "../DonationItem";
 import getFundrising from "../../utils/getFundrising";
 import DonationForm from "../DonationForm";
+import { IDonatedUser } from "@/types/donatedUser";
 
 type Props = {
   id: string;
@@ -12,6 +13,18 @@ type Props = {
 
 const FundrisingPage = async ({ id }: Props) => {
   const fundrising = await getFundrising(id);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}/api/checkout/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const data = await res.json();
+  const donatedUsers = data.sessionsList as IDonatedUser[];
 
   const currentAmount = fundrising.donatedUsers.reduce(
     (accumulator, currValue) => accumulator + currValue.value,
@@ -35,9 +48,9 @@ const FundrisingPage = async ({ id }: Props) => {
             currentAmount={currentAmount}
           />
           <p>{fundrising.donatedUsers.length} donations</p>
-          <DonationForm />
+          <DonationForm fundrisingId={id} />
           <ul className={s.page__grid__right__list}>
-            {fundrising.donatedUsers.map((item, i) => {
+            {donatedUsers.map((item, i) => {
               return (
                 <DonationItem
                   goalAmount={fundrising.goalAmount}

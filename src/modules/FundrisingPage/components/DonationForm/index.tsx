@@ -10,7 +10,11 @@ import { Oval } from "react-loader-spinner";
 import Select from "@/UI/Select";
 import { useRouter } from "next/navigation";
 
-const DonationForm = () => {
+type Props = {
+  fundrisingId: string;
+};
+
+const DonationForm = ({ fundrisingId }: Props) => {
   const [currency, setCurrency] = useState("usd");
   const getMinAmount = (currency: string) => {
     return currency === "usd"
@@ -37,7 +41,7 @@ const DonationForm = () => {
       );
       const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`, {
         method: "POST",
-        body: JSON.stringify({ amount, currency }),
+        body: JSON.stringify({ amount, currency, fundrisingId }),
         headers: {
           "Content-Type": "application/json",
         },

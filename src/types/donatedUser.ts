@@ -1,5 +1,5 @@
 export interface IDonatedUser {
-    name: string;
-    value: number;
-    date: string
+  name: string;
+  value: number;
+  date: string;
 }
