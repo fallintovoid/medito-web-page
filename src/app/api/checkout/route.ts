@@ -6,7 +6,7 @@ import Stripe from "stripe";
 export const runtime = "edge";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_TOKEN!);
-const host = process.env.NEXT_PUBLIC_DEV_HOST;
+const host = process.env.NEXT_PUBLIC_HOST;
 
 interface IRequestBody {
   amount: number;

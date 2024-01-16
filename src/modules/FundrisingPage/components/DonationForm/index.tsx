@@ -11,8 +11,19 @@ import Select from "@/UI/Select";
 import { useRouter } from "next/navigation";
 
 const DonationForm = () => {
-  const [amount, setAmount] = useState("0");
   const [currency, setCurrency] = useState("usd");
+  const getMinAmount = (currency: string) => {
+    return currency === "usd"
+      ? 1
+      : currency === "czk"
+      ? 15
+      : currency === "eur"
+      ? 1
+      : currency === "pln"
+      ? 2
+      : 1;
+  };
+  const [amount, setAmount] = useState(String(getMinAmount(currency)));
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -24,18 +35,13 @@ const DonationForm = () => {
       const stripe = await loadStripe(
         process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
       );
-      console.log(process.env.NEXT_PUBLIC_DEV_HOST);
-      console.log(`${process.env.NEXT_PUBLIC_DEV_HOST}/api/checkout`);
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_DEV_HOST}/api/checkout`,
-        {
-          method: "POST",
-          body: JSON.stringify({ amount, currency }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkout`, {
+        method: "POST",
+        body: JSON.stringify({ amount, currency }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const { sessionId } = await res.json();
       const { error } = await stripe!.redirectToCheckout({ sessionId });
@@ -46,6 +52,11 @@ const DonationForm = () => {
       console.log(e);
       router.push("/404");
     }
+  };
+
+  const handleSelect = (currency: string) => {
+    setCurrency(currency);
+    setAmount(String(getMinAmount(currency)));
   };
 
   const options = [
@@ -74,15 +85,18 @@ const DonationForm = () => {
           id="value"
           name="value"
           type="number"
-          aria-label="Funding amount"
+          aria-label="Set Funding amount"
           placeholder="Funding amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          required
+          min={getMinAmount(currency)}
         />
         <Select
+          aria-label="select currency"
           options={options}
           defaultValue={currency}
-          onChange={(e) => setCurrency(e.target.value)}
+          onChange={(e) => handleSelect(e.target.value)}
         />
       </div>
 
