@@ -1,11 +1,9 @@
 @import '@/styles/config.scss';
 
-.input {
+.select {
     width: 100%;
-    padding: 15px 10px;
-    border: 1px solid rgb(227, 227, 227);
     border-radius: 7px;
+    border: 1px solid rgb(227, 227, 227);
     background-color: $color-primary;
-    box-sizing: border-box;
     transition: 0.2s ease-in-out;
 }

@@ -8,6 +8,7 @@
     gap: 15px;
     border: 1px solid rgb(227, 227, 227);
     align-items: center;
+    position: relative;
 
     &__info {
         display: flex;
@@ -44,5 +45,27 @@
 
     &__tier3 {
         border-right: 3px solid $color-user-tier-3;
+    }
+}
+
+.badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    color: $color-secondary;
+    padding: 3px 5px;
+    border-radius: 15px;
+
+    &__tier1 {
+        background-color: $color-user-tier-1;
+    }
+
+    &__tier2 {
+        background-color: $color-user-tier-2;
+    }
+
+    &__tier3 {
+        background-color: $color-user-tier-3;
     }
 }

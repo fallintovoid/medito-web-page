@@ -4,7 +4,6 @@ import Block from "@/UI/Block";
 import ProgressBar from "../ProgressBar";
 import DonationItem from "../DonationItem";
 import getFundrising from "../../utils/getFundrising";
-import Button from "@/UI/Button";
 import DonationForm from "../DonationForm";
 
 type Props = {
