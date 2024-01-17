@@ -2,6 +2,8 @@
 
 import { IDonatedUser } from "@/types/donatedUser";
 import { IFundrisingGoal } from "@/types/fundrisingGoal";
+import convertUnixTime from "@/utils/convertUnixTime";
+import getConvertedValue from "@/utils/getConvertedValue";
 import { type NextRequest } from "next/server";
 import Stripe from "stripe";
 
@@ -51,5 +53,27 @@ export async function POST(request: NextRequest) {
         status: 500,
       }
     );
+  }
+}
+
+export async function GET() {
+  try {
+    const sessionsList = await stripe.checkout.sessions.list({
+      status: "complete",
+    });
+    const preparedList: IDonatedUser[] | undefined = sessionsList.data
+      .map((item) => {
+        return {
+          name: item.customer_details!.name!.split(" ")[0],
+          value: Number(getConvertedValue(item.amount_total!, item.currency!)),
+          date: convertUnixTime(item.created),
+        };
+      });
+
+    return new Response(JSON.stringify({ sessionsList: preparedList }), {
+      status: 200,
+    });
+  } catch (e) {
+    throw new Error("Error occured by getting sesions list: " + e);
   }
 }

@@ -1,4 +1,4 @@
-const getConvertedValue = (value: number, currency: string) => {
+const getConvertedValue = (value: number, currency: string): string => {
   const exchangeRateCZKtoUSD = 0.044;
   const exchangeRatePLNtoUSD = 0.242;
   const exchangeRateEURtoUSD = 0.85;

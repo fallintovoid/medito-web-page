@@ -24,6 +24,9 @@ const FundrisingPage = async ({ id }: Props) => {
       headers: {
         "Content-Type": "application/json",
       },
+      next: {
+        revalidate: 20,
+      },
     }
   );
 
@@ -39,6 +42,7 @@ const FundrisingPage = async ({ id }: Props) => {
     "use server";
 
     setTimeout(() => {
+      console.log(formData.get("question"));
       console.log(formData.get("email"));
     }, 1000);
   };
@@ -47,12 +51,18 @@ const FundrisingPage = async ({ id }: Props) => {
     <QuestionAndAnswer key={"email form"} question={"Get in touch with us!"}>
       <form className={s.page__grid__left__form} action={sendEmail}>
         <Input
+          placeholder="Ask a Question!"
+          name="question"
+          id="question"
+          type="text"
+        />
+        <Input
           placeholder="Give us your email"
           name="email"
           id="email"
           type="email"
         />
-        <Button type="submit">Send us an email!</Button>
+        <Button type="submit">Send us a question!</Button>
       </form>
     </QuestionAndAnswer>
   );

@@ -34,6 +34,6 @@ export async function GET(
       status: 200,
     });
   } catch (e) {
-    console.log(e);
+    throw new Error("Error occured by getting sesions list: " + e);
   }
 }

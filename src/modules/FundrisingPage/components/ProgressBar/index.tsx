@@ -20,7 +20,7 @@ const ProgressBar = ({ goalAmount, currentAmount }: Props) => {
     <div className={s.progressbar__wrapper}>
       <div className={s.progressbar__info}>
         <div>
-          <span className={s.bold}>{currentAmount}$</span>/{goalAmount}$
+          <span className={s.bold}>{currentAmount.toFixed(1)}$</span>/{goalAmount}$
         </div>
         <div className={s.progressbar__info__right}>{percentage}%</div>
       </div>

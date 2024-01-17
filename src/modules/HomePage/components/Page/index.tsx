@@ -5,8 +5,6 @@ import Link from "next/link";
 import s from "./styles.module.scss";
 import getFundrisings from "../../utils/getFundrisings";
 
-type Props = {};
-
 const HomePage = async () => {
   const fundrisings = await getFundrisings();
 

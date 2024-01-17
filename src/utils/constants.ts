@@ -1,5 +1,28 @@
+import { ICurrency } from "@/types/currency";
 import { IFundrisingGoal } from "@/types/fundrisingGoal";
 
+export const currencies: ICurrency[] = [
+  {
+    value: "pln",
+    label: "PLN",
+    minValue: 2,
+  },
+  {
+    value: "usd",
+    label: "USD",
+    minValue: 1,
+  },
+  {
+    value: "czk",
+    label: "CZK",
+    minValue: 15,
+  },
+  {
+    value: "eur",
+    label: "EUR",
+    minValue: 1,
+  },
+];
 export const fundrisingData: IFundrisingGoal[] = [
   {
     id: "1",

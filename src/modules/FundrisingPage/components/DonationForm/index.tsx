@@ -9,23 +9,17 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Oval } from "react-loader-spinner";
 import Select from "@/UI/Select";
 import { useRouter } from "next/navigation";
+import { currencies } from "@/utils/constants";
 
 type Props = {
   fundrisingId: string;
 };
 
 const DonationForm = ({ fundrisingId }: Props) => {
-  const [currency, setCurrency] = useState("usd");
+  const [currency, setCurrency] = useState(currencies[0].value);
   const getMinAmount = (currency: string) => {
-    return currency === "usd"
-      ? 1
-      : currency === "czk"
-      ? 15
-      : currency === "eur"
-      ? 1
-      : currency === "pln"
-      ? 2
-      : 1;
+    const foundCurrency = currencies.find((item) => item.value === currency);
+    return foundCurrency?.minValue;
   };
   const [amount, setAmount] = useState(String(getMinAmount(currency)));
   const [isLoading, setIsLoading] = useState(false);
@@ -63,25 +57,6 @@ const DonationForm = ({ fundrisingId }: Props) => {
     setAmount(String(getMinAmount(currency)));
   };
 
-  const options = [
-    {
-      value: "pln",
-      label: "PLN",
-    },
-    {
-      value: "usd",
-      label: "USD",
-    },
-    {
-      value: "czk",
-      label: "CZK",
-    },
-    {
-      value: "eur",
-      label: "EUR",
-    },
-  ];
-
   return (
     <form className={s.form} onSubmit={sendMoney}>
       <div className={s.form__inputs}>
@@ -98,7 +73,7 @@ const DonationForm = ({ fundrisingId }: Props) => {
         />
         <Select
           aria-label="select currency"
-          options={options}
+          options={currencies}
           defaultValue={currency}
           onChange={(e) => handleSelect(e.target.value)}
         />
