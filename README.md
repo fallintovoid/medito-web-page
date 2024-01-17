@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Medito Web Page Documentation
 
-## Getting Started
+Medito Web Page with integrated Stripe checkouts, dynamic user donations list, recent donations in notification bar and multiple fundrising.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Currencies
+
+You can setup your currencies in `/utils/constants.ts`. Currency array must satisfy type `ICurrency[]`
+
+```javascript
+export const currencies: ICurrency[] = [
+  {
+    value: "pln", // Value what will be passed in Stripe checkout request
+    label: "PLN", // Label what will be in currency select element
+    minValue: 2, // Mininmum value what User can donate
+  },
+  // ... 
+];
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Styles
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can specify colors in `/styles/variables.scss`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```scss
+// Colors
 
-## Learn More
+$color-main: #62EA0F;
+$color-primary: #FFFFFF;
+$color-secondary: #484848;
+$color-progressbar: #B8FF8C;
 
-To learn more about Next.js, take a look at the following resources:
+$color-user-tier-1: #FF6556;
+$color-user-tier-2: #FFBA56;
+$color-user-tier-3: $color-main;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## Important commands
+- `npm run dev` - runs dev mode
+- `npm run pages:deploy` - runs deploy on cloudflare pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Before running `npm run pages:deploy`, you need to provide `.env.local` variables:
+
+- `STRIPE_SECRET_TOKEN` =  <secret_token_from_stripe>
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` =  <publishble_key_from_stripe>
+- `NEXT_PUBLIC_HOST` = <your_host_url_such_as_http://localhost:3002>
+
+***!!! Otherwise it will not work even with provided variables inside cloudflare pages***
+
+## Architecture
+
+- `/app` - it contains pages urls and also api routes
+- `/modules` - it contains big components and has index.ts file inside and folders such as /components and /utils. Components from modules can be used only in pages and not anymore to avoid unpredictible relations
+- `/UI` - it contains small components which can be used everywhere
+- `/styles` - it contains style configuration files
+- `/types` - it contains types which can be used everywhere
+- `/utils` - it contains functions and constants which can be used everywhere
+
+## External API integration
+
+All donations are already handled with Stripe API (Donations incl. getting donators for each fundrising)
+
+### Fundrisings
+
+Currently used static data from `/utils/constants.ts`
+
+To make website working properly with your API you need to change the code inside `/modules/HomePage/utils/getFundrisings.ts` so you will get the response of type `IFundrisingGoal[]` which is described in `/types/fundrisngGoal.ts`
+
+```javascript
+const getFundrisings = (): Promise<IFundrisingGoal[]> => {
+ // Your code here
+};
+```
+
+### One Fundrising
+
+Currently used static data from `/utils/constants.ts`
+
+To make website working properly with your API you need to change the code inside `/modules/FundrisingPage/utils/getFundrising.ts` so you will get the response of type `IFundrisingGoal` which is described in `/types/fundrisingGoal.ts`
+
+```javascript
+const getFundrising = (id: string): Promise<IFundrisingGoal> => {
+  // Your code here
+};
+```
+
+### Currency convertion
+
+Currently used static currency convertion in `/utils/getConvertedValue.ts`
+
+In order to use current convertion, the external API request must be provided. And dont forget about relation between your current currency list and your response data from request. Dont forget to adapt the code to your return value in `/app/api/checkout/route.ts GET request` and `/app/api/checkout/[id]/route.ts GET request`
+
+```javascript
+const getConvertedValue = (value: number, currency: string): Promise<string> => {
+  // Your code here
+};
+```
+
+### Question sending
+
+Currently used console.logging of values from form inputs in `/modules/FundrisingPage/Page/index.tsx`.
+In order to change the behavior add API request in sendEmail function
+
+```javascript
+const sendEmail = async (formData: FormData) => {
+    "use server";
+
+   /// Your code here
+};
+```
