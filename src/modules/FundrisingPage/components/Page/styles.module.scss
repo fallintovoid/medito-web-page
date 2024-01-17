@@ -7,15 +7,16 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    box-sizing: border-box;
+    width: 100%;
 
     &__grid {
         display: flex;
         gap: 10px;
-        
+        width: 100%;
 
         @include max-tablets {
-           flex-direction: column;
-           width: 100%;
+            flex-direction: column;
         }
 
         &__left {
@@ -23,9 +24,56 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            height: fit-content;
 
             @include max-tablets {
                 width: 100%;
+            }
+
+            &__form {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                @include max-tablets {
+                    width: 100%;
+                }
+            }
+            
+            &__tiers {
+                display: flex;
+                gap: 7px;
+
+                @include max-tablets {
+                    flex-direction: column;
+                }
+            }
+
+            &__tier_block {
+                border-radius: 12px;
+                padding: $padding-block;
+                transition: 0.2s ease-in-out;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                line-height: 1.3em;
+                
+                &__tier_1 {
+                    border: 1px solid $color-user-tier-1;
+                    border-left: 10px solid $color-user-tier-1;
+                }
+
+                &__tier_2 {
+                    border: 1px solid $color-user-tier-2;
+                    border-left: 10px solid $color-user-tier-2;
+                }
+
+                &__tier_3 {
+                    border: 1px solid $color-user-tier-3;
+                    border-left: 10px solid $color-user-tier-3;
+                }
+                
             }
         }
 
@@ -46,5 +94,25 @@
             }
         }
 
+    }
+}
+
+.badge {
+    font-size: 10px;
+    color: $color-secondary;
+    padding: 3px 5px;
+    border-radius: 15px;
+    width: fit-content;
+
+    &__tier1 {
+        background-color: $color-user-tier-1;
+    }
+
+    &__tier2 {
+        background-color: $color-user-tier-2;
+    }
+
+    &__tier3 {
+        background-color: $color-user-tier-3;
     }
 }

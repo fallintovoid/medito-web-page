@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import cn from "classnames";
+import React from "react";
+import { motion } from "framer-motion";
 
 import s from "./styles.module.scss";
 
@@ -25,10 +25,15 @@ const ProgressBar = ({ goalAmount, currentAmount }: Props) => {
         <div className={s.progressbar__info__right}>{percentage}%</div>
       </div>
       <div className={s.progressbar}>
-        <div
+        <motion.div
           className={s.progressbar__inner}
-          style={{ width: styledPercentage }}
-        ></div>
+          animate={{
+            width: styledPercentage,
+          }}
+          transition={{
+            duration: 2,
+          }}
+        ></motion.div>
       </div>
     </div>
   );

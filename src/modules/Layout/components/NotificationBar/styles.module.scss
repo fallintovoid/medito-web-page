@@ -1,0 +1,21 @@
+@import '@/styles/config.scss';
+
+.bar {
+    width: 100vw;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-primary;
+    background-color: $color-secondary;
+    font-size: 14px;
+    font-weight: 600;
+
+    @include max-tablets {
+        padding: 10px 20px;
+    }
+
+    @include max-phones {
+        padding: 10px;
+    }
+}

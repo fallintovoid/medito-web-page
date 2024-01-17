@@ -6,16 +6,18 @@ export const fundrisingData: IFundrisingGoal[] = [
     title: "Lorem ipsum",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     goalAmount: 300,
-    donatedUsers: [
+    questions: [
       {
-        name: "Steve",
-        value: 1,
-        date: "1995-12-17T03:24:00",
+        question: "Question 1",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "2024-01-14T03:24:00",
+        question: "Question 2",
+        answer: "Hello",
+      },
+      {
+        question: "Question 3",
+        answer: "Hello",
       },
     ],
   },
@@ -24,26 +26,18 @@ export const fundrisingData: IFundrisingGoal[] = [
     title: "Lorem ipsum",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     goalAmount: 300,
-    donatedUsers: [
+    questions: [
       {
-        name: "Steve",
-        value: 120,
-        date: "1995-12-17T03:24:00",
+        question: "Question 1",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 2",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
-      },
-      {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 3",
+        answer: "Hello",
       },
     ],
   },
@@ -52,31 +46,18 @@ export const fundrisingData: IFundrisingGoal[] = [
     title: "Lorem ipsum",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     goalAmount: 300,
-    donatedUsers: [
+    questions: [
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 1",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 2",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
-      },
-      {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
-      },
-      {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 3",
+        answer: "Hello",
       },
     ],
   },
@@ -85,31 +66,18 @@ export const fundrisingData: IFundrisingGoal[] = [
     title: "Lorem ipsum",
     description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     goalAmount: 300,
-    donatedUsers: [
+    questions: [
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 1",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 2",
+        answer: "Hello",
       },
       {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
-      },
-      {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
-      },
-      {
-        name: "Steve",
-        value: 20,
-        date: "1995-12-17T03:24:00",
+        question: "Question 3",
+        answer: "Hello",
       },
     ],
   },
