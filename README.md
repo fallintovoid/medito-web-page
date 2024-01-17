@@ -39,6 +39,10 @@ $color-user-tier-3: $color-main;
 
 ```
 
+### Metadata
+
+In page components such as `/app/page.tsx` there is an object with metadata where you can specify your values
+
 ## Important commands
 - `npm run dev` - runs dev mode
 - `npm run pages:deploy` - runs deploy on cloudflare pages
