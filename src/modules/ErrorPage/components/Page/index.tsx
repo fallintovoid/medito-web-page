@@ -2,7 +2,6 @@ import React from "react";
 
 import s from "./styles.module.scss";
 import Button from "@/UI/Button";
-import Link from "next/link";
 
 const Page = ({
   error,

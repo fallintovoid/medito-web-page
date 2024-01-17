@@ -2,7 +2,6 @@ import React from "react";
 import s from "./styles.module.scss";
 import Block from "@/UI/Block";
 import ProgressBar from "../ProgressBar";
-import DonationItem from "../DonationItem";
 import getFundrising from "../../utils/getFundrising";
 import DonationForm from "../DonationForm";
 import { IDonatedUser } from "@/types/donatedUser";
@@ -25,9 +24,7 @@ const FundrisingPage = async ({ id }: Props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      next: {
-        revalidate: 20,
-      },
+      cache: 'no-store'
     }
   );
 
