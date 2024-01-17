@@ -10,8 +10,7 @@ import QuestionAndAnswer from "../QuestionAndAnswer";
 import Input from "@/UI/Input";
 import Button from "@/UI/Button";
 import cn from "classnames";
-
-
+import DonationsList from "../DonationsList";
 
 type Props = {
   id: string;
@@ -124,19 +123,10 @@ const FundrisingPage = async ({ id }: Props) => {
           />
           <p>{donatedUsers.length} donations</p>
           <DonationForm fundrisingId={id} />
-          <ul className={s.page__grid__right__list}>
-            {donatedUsers.map((item, i) => {
-              return (
-                <DonationItem
-                  goalAmount={fundrising.goalAmount}
-                  donatorName={item.name}
-                  value={item.value}
-                  date={item.date}
-                  key={i}
-                />
-              );
-            })}
-          </ul>
+          <DonationsList
+            donatedUsers={donatedUsers}
+            goalAmount={fundrising.goalAmount}
+          />
         </Block>
       </div>
     </main>
