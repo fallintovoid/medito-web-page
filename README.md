@@ -74,7 +74,7 @@ All donations are already handled with Stripe API (Donations incl. getting donat
 
 Currently used static data from `/utils/constants.ts`
 
-To make website working properly with your API you need to change the code inside `/modules/HomePage/utils/getFundrisings.ts` so you will get the response of type `IFundrisingGoal[]` which is described in `/types/fundrisngGoal.ts`
+To make website working properly with your API you need to change the code inside `/modules/HomePage/utils/getFundrisings.ts` so you will get the response of type `IFundrisingGoal[]` which is described in `/types/fundrisingGoal.ts`
 
 ```javascript
 const getFundrisings = (): Promise<IFundrisingGoal[]> => {
