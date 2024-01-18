@@ -58,6 +58,8 @@
                 flex-direction: column;
                 gap: 10px;
                 line-height: 1.3em;
+                text-align: center;
+                align-items: center;
                 
                 &__tier_1 {
                     border: 1px solid $color-user-tier-1;

@@ -26,21 +26,28 @@ export const currencies: ICurrency[] = [
 export const fundrisingData: IFundrisingGoal[] = [
   {
     id: "1",
-    title: "Lorem ipsum",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    title: "Buying new equipment for bottle recycling",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     goalAmount: 300,
     questions: [
       {
-        question: "Question 1",
-        answer: "Hello",
+        question:
+          "Why is it important to invest in new equipment for bottle recycling?",
+        answer:
+          "Investing in new equipment for bottle recycling is crucial for enhancing efficiency and increasing recycling capacity. Modern equipment allows for faster processing, improved sorting, and a higher rate of materials recovery, contributing to a more sustainable and environmentally friendly recycling process.",
       },
       {
-        question: "Question 2",
-        answer: "Hello",
+        question:
+          "How will the funds raised specifically be used to improve bottle recycling efforts?",
+        answer:
+          "The funds raised will be dedicated to acquiring state-of-the-art recycling equipment. This includes advanced sorting machines, shredders, and compactors designed to handle a variety of bottle materials. Upgrading our equipment ensures a more streamlined and effective recycling process, ultimately leading to greater environmental benefits.",
       },
       {
-        question: "Question 3",
-        answer: "Hello",
+        question:
+          "What impact will the community see from the purchase of new recycling equipment?",
+        answer:
+          "The community can expect several positive impacts from the purchase of new recycling equipment. Firstly, there will be an increase in recycling capacity, allowing us to process a larger volume of bottles. This, in turn, promotes a cleaner environment by reducing plastic waste. Additionally, the improved efficiency will lead to cost savings, making the recycling program more sustainable in the long run.",
       },
     ],
   },

@@ -24,7 +24,7 @@ const FundrisingPage = async ({ id }: Props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: 'no-store'
+      cache: "no-store",
     }
   );
 
@@ -75,43 +75,57 @@ const FundrisingPage = async ({ id }: Props) => {
     <main className={s.page}>
       <h1>{fundrising.title}</h1>
       <div className={s.page__grid}>
-        <Block className={s.page__grid__left}>
-          <h3>About this Fundrising</h3>
-          <p>{fundrising.description}</p>
-          {[...questionsAndAnswers, generateEmailForm()]}
-          <div className={s.page__grid__left__tiers}>
-            <Block
-              overrideClassname={cn(
-                s.page__grid__left__tier_block,
-                s.page__grid__left__tier_block__tier_1
-              )}
-            >
-              By donating an amount more than 20% of overall fundrising goal you
-              will get red badge of{" "}
-              <div className={cn(s.badge__tier1, s.badge)}>Tier 1 Donator</div>
-            </Block>
-            <Block
-              overrideClassname={cn(
-                s.page__grid__left__tier_block,
-                s.page__grid__left__tier_block__tier_2
-              )}
-            >
-              By donating an amount more than 10% of overall fundrising goal you
-              will get orange badge of{" "}
-              <div className={cn(s.badge__tier2, s.badge)}>Tier 2 Donator</div>
-            </Block>
-            <Block
-              overrideClassname={cn(
-                s.page__grid__left__tier_block,
-                s.page__grid__left__tier_block__tier_3
-              )}
-            >
-              By donating an amount more than 5% of overall fundrising goal you
-              will get green badge of{" "}
-              <div className={cn(s.badge__tier3, s.badge)}>Tier 3 Donator</div>
-            </Block>
-          </div>
-        </Block>
+        <div className={s.page__grid__left}>
+          <Block>
+            <h3>About this Fundrising</h3>
+            <p>{fundrising.description}</p>
+          </Block>
+          <Block>
+            <h3>Questions</h3>
+            {[...questionsAndAnswers, generateEmailForm()]}
+          </Block>
+          <Block>
+            <h3>Donation Rewards</h3>
+            <div className={s.page__grid__left__tiers}>
+              <Block
+                overrideClassname={cn(
+                  s.page__grid__left__tier_block,
+                  s.page__grid__left__tier_block__tier_1
+                )}
+              >
+                <h3>20%</h3>
+                of overall fundrising goal you will get red badge of
+                <div className={cn(s.badge__tier1, s.badge)}>
+                  Tier 1 Donator
+                </div>
+              </Block>
+              <Block
+                overrideClassname={cn(
+                  s.page__grid__left__tier_block,
+                  s.page__grid__left__tier_block__tier_2
+                )}
+              >
+                <h3>10%</h3>
+                of overall fundrising goal you will get orange badge of{" "}
+                <div className={cn(s.badge__tier2, s.badge)}>
+                  Tier 2 Donator
+                </div>
+              </Block>
+              <Block
+                overrideClassname={cn(
+                  s.page__grid__left__tier_block,
+                  s.page__grid__left__tier_block__tier_3
+                )}
+              >
+                <h3>5%</h3>
+                of overall fundrising goal you will get green badge of{" "}
+                <div className={cn(s.badge__tier3, s.badge)}>
+                  Tier 3 Donator
+                </div>
+              </Block>
+            </div>
+          </Block>
+        </div>
 
         <Block className={s.page__grid__right}>
           <ProgressBar

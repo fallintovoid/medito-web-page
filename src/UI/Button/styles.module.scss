@@ -3,12 +3,12 @@
 .button {
     width: 100%;
     padding: 10px 15px;
-    color: $color-secondary;
+    color: $color-button-text;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background-color: $color-main;
+    background-color: $color-button;
     font-size: 16px;
     font-weight: 600;
     transition: 0.3s ease-in-out;
@@ -16,6 +16,6 @@
     border: 0;
 
     &:hover {
-        background-color: $color-progressbar;
+        background-color: $color-button-hover;
     }
 }
