@@ -4,8 +4,9 @@
     border-radius: 12px;
     padding: $padding-block;
     transition: 0.2s ease-in-out;
+    background-color: $color-block;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid rgb(227, 227, 227);
+    border: 1px solid $color-block-border;
 }
